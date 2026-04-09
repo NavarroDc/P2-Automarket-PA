@@ -8,8 +8,19 @@ namespace CapaEntidades
 {
     public class VehiculoXSucursal
     {
-        public int IdSucursal { get; set; }
-        public int IdVehiculo { get; set; }
-        public int cantidad { get; set; }
+        public Sucursal Sucursal { get; set; }
+        public Vehiculo Vehiculo { get; set; }
+        public int Cantidad { get; set; }
+
+        public VehiculoXSucursal()
+        { 
+        }
+
+        public VehiculoXSucursal(Sucursal sucursal, Vehiculo vehiculo, int cantidad)
+        {
+            Sucursal = sucursal;
+            Vehiculo = vehiculo;
+            Cantidad = cantidad;
+        }
     }
 }
