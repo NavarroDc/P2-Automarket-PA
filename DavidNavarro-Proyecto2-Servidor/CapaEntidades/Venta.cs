@@ -9,29 +9,34 @@ namespace CapaEntidades
     public class Venta
     {
         public int IdVenta { get; set; }
-        public int IdCliente { get; set; }
-        public int IdSucursal { get; set; }
-        public int IdVehiculo { get; set; }
+        public Cliente Cliente { get; set; }
+        public Sucursal Sucursal { get; set; }
+        public Vehiculo Vehiculo { get; set; }
         public DateTime FechaVenta { get; set; }
         public decimal Monto { get; set; }
 
+
+        public Venta()
+        { 
+        }
+
         //Constructor sin IdVenta
-        public Venta(int idCliente, int idSucursal, int idVehiculo, DateTime fechaVenta, decimal monto)
+        public Venta(Cliente cliente, Sucursal sucursal, Vehiculo vehiculo, DateTime fechaVenta, decimal monto)
         {
-            IdCliente = idCliente;
-            IdSucursal = idSucursal;
-            IdVehiculo = idVehiculo;
+            Cliente = cliente;
+            Sucursal = sucursal;
+            Vehiculo = vehiculo;
             FechaVenta = fechaVenta;
             Monto = monto;
         }
 
         //Constructor con IdVenta
-        public Venta(int idVenta, int idCliente, int idSucursal, int idVehiculo, DateTime fechaVenta, decimal monto)
+        public Venta(int idVenta, Cliente cliente, Sucursal sucursal, Vehiculo vehiculo, DateTime fechaVenta, decimal monto)
         {
             IdVenta = idVenta;
-            IdCliente = idCliente;
-            IdSucursal = idSucursal;
-            IdVehiculo = idVehiculo;
+            Cliente = cliente;
+            Sucursal = sucursal;
+            Vehiculo = vehiculo;
             FechaVenta = fechaVenta;
             Monto = monto;
         }
