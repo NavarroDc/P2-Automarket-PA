@@ -15,6 +15,10 @@ namespace CapaEntidades
         public DateTime FechaRegistro { get; set; }
         public bool Activo { get; set; }
 
+        public Cliente()
+        { 
+        }
+
         public Cliente(int idCliente, string identificacion, string nombreCompleto, DateTime fechaNacimiento, DateTime fechaRegistro, bool activo)
         {
             IdCliente = idCliente;
