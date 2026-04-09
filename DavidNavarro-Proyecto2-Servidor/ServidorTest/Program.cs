@@ -1,39 +1,16 @@
-﻿using System;
+﻿using CapaAccesoDatos;
+using CapaEntidades;
+using System;
 using System.Data.SqlClient;
 using System.Linq.Expressions;
-using CapaAccesoDatos;
 
-Console.WriteLine("INICIO DEL PROGRAMA");
+CategoriaVehiculoDatos datos = new CategoriaVehiculoDatos();
 
-ConexionBaseDatos conexionDB = new ConexionBaseDatos();
+List<CategoriaVehiculo> lista = datos.ObtenerCategorias();
 
-using (SqlConnection conexion = conexionDB.CrearConexionDatos())
+foreach (var item in lista)
 {
-    try
-    {
-        conexion.Open();
-        Console.WriteLine("CONEXION EXITOSA");
-
-        string consulta = "SELECT IdCategoria, NombreCategoria, Descripcion FROM CategoriaVehiculo";
-
-        SqlCommand comando = new SqlCommand(consulta, conexion);
-
-        SqlDataReader reader = comando.ExecuteReader();
-
-        Console.WriteLine("\nDATOS DE CATEGORIA\n");
-
-        while (reader.Read())
-        {
-            Console.WriteLine("ID: " + reader["IdCategoria"]);
-            Console.WriteLine("Nombre: " + reader["NombreCategoria"]);
-            Console.WriteLine("Descripción: " + reader["Descripcion"]);
-            Console.WriteLine("---------------------------");
-        }
-
-        reader.Close();
-    } catch (Exception ex)
-    {
-        Console.WriteLine("ERROR: " + ex.Message);
-    }
+    Console.WriteLine(item.IdCategoria + " - " + item.NombreCategoria);
 }
+
 Console.ReadLine();
