@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Linq.Expressions;
 using CapaAccesoDatos;
 
 Console.WriteLine("INICIO DEL PROGRAMA");
@@ -10,16 +11,29 @@ using (SqlConnection conexion = conexionDB.CrearConexionDatos())
 {
     try
     {
-        Console.WriteLine("ANTES DE ABRIR CONEXION");
-
         conexion.Open();
+        Console.WriteLine("CONEXION EXITOSA");
 
-        Console.WriteLine("CONEXION EXITOSA ");
-    }
-    catch (Exception ex)
+        string consulta = "SELECT IdCategoria, NombreCategoria, Descripcion FROM CategoriaVehiculo";
+
+        SqlCommand comando = new SqlCommand(consulta, conexion);
+
+        SqlDataReader reader = comando.ExecuteReader();
+
+        Console.WriteLine("\nDATOS DE CATEGORIA\n");
+
+        while (reader.Read())
+        {
+            Console.WriteLine("ID: " + reader["IdCategoria"]);
+            Console.WriteLine("Nombre: " + reader["NombreCategoria"]);
+            Console.WriteLine("Descripción: " + reader["Descripcion"]);
+            Console.WriteLine("---------------------------");
+        }
+
+        reader.Close();
+    } catch (Exception ex)
     {
         Console.WriteLine("ERROR: " + ex.Message);
     }
 }
-
 Console.ReadLine();
