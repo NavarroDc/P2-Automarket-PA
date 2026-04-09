@@ -15,6 +15,9 @@ namespace CapaEntidades
         public DateTime FechaIngreso { get; set; }
         public string Telefono { get; set; }
 
+        public Vendedor()
+        { 
+        }
         public Vendedor(int idVendedor, string identificacion, string nombreCompleto, DateTime fechaNacimiento, DateTime fechaIngreso, string telefono)
         {
             IdVendedor = idVendedor;
