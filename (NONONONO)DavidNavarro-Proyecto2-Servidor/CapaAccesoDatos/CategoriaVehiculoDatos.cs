@@ -45,5 +45,10 @@ namespace CapaAccesoDatos
             }
             return listaCategorias;
         }
+
+        public void InsertarCategoria(CategoriaVehiculo categoria)
+        {
+            using()
+        }
     }
 }
